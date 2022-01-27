@@ -1,0 +1,28 @@
+{
+  "root": "apps/cypress-repro-e2e",
+  "sourceRoot": "apps/cypress-repro-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/cypress-repro-e2e/cypress.json",
+        "devServerTarget": "cypress-repro:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "cypress-repro:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cypress-repro-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["cypress-repro"]
+}

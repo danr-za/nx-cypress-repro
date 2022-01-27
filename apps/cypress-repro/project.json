@@ -1,0 +1,73 @@
+{
+  "root": "apps/cypress-repro",
+  "sourceRoot": "apps/cypress-repro/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/cypress-repro",
+        "index": "apps/cypress-repro/src/index.html",
+        "baseHref": "/",
+        "main": "apps/cypress-repro/src/main.tsx",
+        "polyfills": "apps/cypress-repro/src/polyfills.ts",
+        "tsConfig": "apps/cypress-repro/tsconfig.app.json",
+        "assets": [
+          "apps/cypress-repro/src/favicon.ico",
+          "apps/cypress-repro/src/assets"
+        ],
+        "styles": ["apps/cypress-repro/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/cypress-repro/src/environments/environment.ts",
+              "with": "apps/cypress-repro/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "cypress-repro:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "cypress-repro:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/cypress-repro/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/cypress-repro"],
+      "options": {
+        "jestConfig": "apps/cypress-repro/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

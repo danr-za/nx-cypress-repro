@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "cypress-repro": "apps/cypress-repro",
+    "cypress-repro-e2e": "apps/cypress-repro-e2e"
+  }
+}
