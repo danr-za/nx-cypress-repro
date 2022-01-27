@@ -9,5 +9,11 @@ describe('cypress-repro', () => {
 
     // Function helper example, see `../support/app.po.ts` file
     getGreeting().contains('Welcome cypress-repro');
+
+    /**
+     * Currently set to localhost:8080 in cypress.env.json
+     * Should be overriden by running with env.NX_API_URL
+     */
+    console.log(Cypress.env('NX_API_URL'))
   });
 });
